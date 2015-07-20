@@ -243,6 +243,7 @@ module Google
           body.rewind if body.respond_to?(:rewind)
           begin
             logger.debug { sprintf('Sending HTTP %s %s', method, url) }
+            logger.debug { body.inspect }
             response = client.send(method, url, body) do |req|
               apply_request_options(req)
             end
